@@ -1,0 +1,30 @@
+{
+  "name": "estimateone-challenge",
+  "version": "1.0.0",
+  "description": "EstimateOne Coding Challenge",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "jest --watchAll --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanCMC37/EstimateOne-Challenge.git"
+  },
+  "author": "Ivan Chan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanCMC37/EstimateOne-Challenge/issues"
+  },
+  "homepage": "https://github.com/IvanCMC37/EstimateOne-Challenge#readme",
+  "dependencies": {
+    "yargs": "^17.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-jest": "^28.1.0",
+    "eslint": "^8.15.0",
+    "jest": "^28.1.0"
+  }
+}
