@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const { statsInitializer } = require('./statsHelper');
+const { statsInitializer } = require('../helper/statsHelper');
 
 describe('statsInitializer unit test(s)', () => {
   let matchDetail;

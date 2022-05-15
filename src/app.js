@@ -2,7 +2,7 @@ const { fileReader } = require('./helper/fileReader');
 const yargs = require('yargs');
 const { splashPageHandler } = require('./helper/queryHandler');
 
-const argv = yargs
+const command = yargs
   .option('file', {
     alias: 'f',
     description: 'Insert file to be loaded for scoring...',
@@ -13,7 +13,7 @@ const argv = yargs
   .alias('help', 'h').argv;
 
 try {
-  const [_, matchDetailMap, playerStatsMap] = fileReader(argv.file);
+  const [_, matchDetailMap, playerStatsMap] = fileReader(command.file);
 
   splashPageHandler(matchDetailMap, playerStatsMap);
 } catch (error) {

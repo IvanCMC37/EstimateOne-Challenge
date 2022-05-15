@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const { scoreCalculator } = require('./scoreCalculator');
+const { scoreCalculator } = require('../helper/scoreCalculator');
 
 describe('Score calculator unit test(s)', () => {
   let matchDetail;

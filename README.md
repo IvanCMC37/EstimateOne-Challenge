@@ -24,8 +24,6 @@ For choice of packages, I have chose Jest for testing, Prettier for code formatt
 
 ## Quick Start
 
-Add your mongoURI to the .env file. Make sure you set an env var for both mongoURI and jwtSecret for deployment
-
 ```bash
 # Install dependencies for the application
 npm install

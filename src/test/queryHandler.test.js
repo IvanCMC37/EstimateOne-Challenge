@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const { tennisCommandHandler } = require('./queryHandler');
+const { tennisCommandHandler } = require('../helper/queryHandler');
 
 describe('Query testing', () => {
   let matchDetail;
