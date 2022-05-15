@@ -24,7 +24,7 @@ function fileReader(filePath) {
 function matchParser(line, index) {
   if (line.match(MATCH_LINE_REGEX)) {
     const matchID = Number(line.match(MATCH_LINE_REGEX)[1]);
-    return [true, matchID];
+    return [matchID];
   }
   throw invalidParserError(index, line);
 }
@@ -34,7 +34,7 @@ function playerParser(line, index) {
     const players = line.match(PLAYER_LINE_REGEX);
     const playerOneName = players[1];
     const playerTwoName = players[2];
-    return [true, playerOneName, playerTwoName];
+    return [playerOneName, playerTwoName];
   }
   throw invalidParserError(index, line);
 }
@@ -51,8 +51,6 @@ function lineReader(txtFileInput) {
   if (txtFileInput === '') throw SyntaxError();
   if (txtFileInput === '\n') throw SyntaxError();
 
-  let matchFound = false;
-  let playersFound = false;
   let matchFinished = false;
   let matchID = null;
   let match = null;
@@ -65,19 +63,18 @@ function lineReader(txtFileInput) {
       return;
     }
 
-    if (!matchFound) {
-      [matchFound, matchID] = matchParser(line, index);
+    //Find match
+    if (!matchID) {
+      [matchID] = matchParser(line, index);
 
-      //only create the new object when match is found
-      if (matchFound) {
+      if (matchID) {
         match = new matchDetail();
       }
       match.matchID = matchID;
-    } else if (!playersFound) {
-      [playersFound, match.playerOneName, match.playerTwoName] = playerParser(
-        line,
-        index
-      );
+      //Find players
+    } else if (!match.playerOneName) {
+      [match.playerOneName, match.playerTwoName] = playerParser(line, index);
+      //Find score
     } else if (!matchFinished) {
       const score = scoreParser(line, index);
       [match, matchFinished, playerStatsMap] = scoreCalculator(
@@ -89,7 +86,7 @@ function lineReader(txtFileInput) {
 
     //since match finished, reset variables for next match
     if (matchFinished) {
-      matchFound = playersFound = matchFinished = false;
+      matchFinished = false;
     }
 
     matchDetailMap.set(matchID, match);
